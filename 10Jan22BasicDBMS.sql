@@ -40,6 +40,10 @@ VALUES
 DELETE FROM STUDENT
 WHERE StudentID = 4
 
+Update STUDENT
+Set Email = 'prince@yahoo.com'
+Where Name = 'Prince'
+
 SELECT age FROM STUDENT
 GROUP BY AGE
 
