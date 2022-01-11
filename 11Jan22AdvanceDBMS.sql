@@ -92,23 +92,19 @@ WHERE Student.StudentID = @StudentID
 EXEC SP_Student_SelectByPK 3
 
 
-CREATE PROCEDURE SP_Student_Insert 
-	@StudentID INT OUTPUT,
-	@Name varchar(50)
+CREATE PROCEDURE SP_Student_Select
+	@Age Int,
+	@Count Int Output
 AS
-INSERT INTO Student
-(
-	[StudentID],
-	[Name]
-)
-VALUES
-(
-	@StudentID,
-	@Name
-)
-SET @StudentID= SCOPE_IDENTITY()
+Select * from Student
+Where Student.age = @Age
+Select @count = @@Rowcount
 
-EXEC SP_Student_Insert 10,'XYZ'
+Declare @Count Int
+Exec SP_Student_Select 20, @Count = @Count Output
+
+Select @Count as 'Total Student'
+
 
 BEGIN TRY
   SELECT * from student
