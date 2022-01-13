@@ -27,6 +27,3 @@ select * from student
 CREATE LOGIN Rushi WITH PASSWORD = 'Pass123'
 
 CREATE USER Rushi FROM LOGIN Rushi
-
-
-
