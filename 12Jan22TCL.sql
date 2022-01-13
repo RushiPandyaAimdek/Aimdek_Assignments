@@ -28,12 +28,7 @@ CREATE LOGIN Rushi WITH PASSWORD = 'Pass123'
 
 CREATE USER Rushi FROM LOGIN Rushi
 
-
 EXECUTE AS USER = 'Pandya'
 SELECT * FROM fn_my_permissions ('Aimdek','Database')
 
 GRANT CONTROL ON DATABASE :: Aimdek TO Pandya
-
-
-
-
