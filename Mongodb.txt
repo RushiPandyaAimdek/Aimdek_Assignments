@@ -1,0 +1,47 @@
+show dbs
+
+use demodb
+
+db.createCollection('temp')
+
+show collections
+
+db.temp.insertOne({
+    name: 'Bugattie',
+    model: '2005'
+
+})
+
+db.temp.insertMany([
+  {
+    name: 'Bugattie',
+    model: '2005'
+  },
+  {
+    name: 'Aston Martin',
+    model: '2018'
+  },
+  {
+    name: 'Ferrari',
+    model: '2013'
+  }
+])
+
+db.temp.find()
+
+db.temp.find({'model': '2005'})
+
+db.temp.update({ name: 'Bugattie' },
+{
+  $set: {
+    model: 2021
+  }
+})
+
+db.temp.deleteOne({ name: 'Ferrari' })
+
+db.temp.deleteMany({ model: 2013 })
+
+db.temp.find({ name: 'Aston Martin' })
+
+db.temp.createIndex({ name: 'text'})
