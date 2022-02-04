@@ -1,0 +1,29 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+
+}
+.sidebar{
+    height: 100vh;
+    padding-right: 0%;
+    padding-left: 0%;
+}
+.maincontent{
+    padding-right: 0%;
+    padding-left: 0%;
+}
+.pagecontent{
+    margin-top: 15px;
+}
+.card-img-top{
+    height: 190px;
+    width: 100%;
+}
+.footer{
+    margin-top: 15px;
+}
+.nav-link:hover{
+    background-color: bisque;
+    color: black !important;
+}
