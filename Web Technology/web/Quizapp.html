@@ -6,15 +6,16 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="./assets/css/Quizapp.css" rel="stylesheet">
-    </head>
+</head>
 
 <body>
 
-    <div class="container mt-5 mb-3">
+    <div class="container mt-5 mb-5">
 
         <!--Home Page-->
         <div class="row d-flex justify-content-center">
             <div class="col-md-8 border p-4">
+                <div id="home_page">
                 <div class="card-body">
                     <h5 class="card-text font-weight-bold" id="title">Quiz Game</h5>
                     <h5>(<span id="number">0</span> Out of 5)</h5>
@@ -22,32 +23,58 @@
                 <hr>
                 <div class="start_page">
                     <h3 class="text-center mb-5">Quiz game using HTML, Css and JQuery</h3>
-                    <div class="p-3">You will get 5 marks for each correct answer, at the end of the Quiz final result will be displayed and Maximum mark is 25</div>
-                    <div class="text-center mt-3 mb-4"><h5>Best of luck !!</h5></div>
+                    <div class="p-3">You will get 5 marks for each correct answer, at the end of the Quiz final result
+                        will be displayed and Maximum mark is 25</div>
+                    <div class="text-center mt-3 mb-4">
+                        <h5>Best of luck !!</h5>
+                    </div>
                     <button class="btn btn-primary btn-lg d-flex mx-auto" id="btnStart">Start Quiz</button>
                 </div>
-
+            </div>
                 <!--Quiz page-->
                 <div id="quizContent">
-                    <div class="card-body">
+                    <div class="card-body p-3">
                         <h5 class="card-text font-weight-bold" id="questions"></h5>
                     </div>
-                    <!-- <div class="col-md-12 p-5" id="options">
-                        <input type="radio" id="option1" name="option">
-                        <label class="col-form-label" for="option1">wij</label><br><br>
-                        <input type="radio" id="option2" name="option"><br><br>
-                        <input type="radio" id="option3" name="option"><br><br>
-                        <input type="radio" id="option4" name="option" value="option1">
-                    </div> -->
-                    <form class="col-md-12 p-5" name="options">
-
-                        <input type="radio" name="option"><label id="option1">svadwvwvwrbw FB</label><br><br>
-                        <input type="radio" name="option"><label id="option2">svadwvwvwrbw FB</label><br><br>
-                        <input type="radio" name="option"><label id="option3">svadwvwvwrbw FB</label><br><br>
-                        <input type="radio" name="option"><label id="option4">svadwvwvwrbw FB</label>
-                    </form>
+                    <div class="col-md-12 p-3">
+                        <div>
+                            <label class="radio form-check-label">
+                                <input type="radio" class="form-check-input" name="option" value="radio1" id="radio1">
+                                <span id="option1"></span>
+                            </label>
+                        </div><br>
+                        <div><label class="radio form-check-label">
+                                <input type="radio" class="form-check-input" name="option" value="radio2" id="radio2">
+                                <span id="option2"></span>
+                            </label>
+                        </div><br>
+                        <div><label class="radio form-check-label">
+                                <input type="radio" class="form-check-input" name="option" value="radio3" id="radio3">
+                                <span id="option3"></span>
+                            </label>
+                        </div><br>
+                        <div><label class="radio form-check-label">
+                                <input type="radio" class="form-check-input" name="option" value="radio4" id="radio4">
+                                <span id="option4"></span>
+                            </label>
+                        </div>
+                    </div>
                     <div class="footer p-2">
                         <button class="btn btn-primary" id="next">Next</button>
+                    </div>
+                    <div class="d-flex justify-content-center  mt-3">
+                        <button class="btn btn-primary btn-lg mx-auto" id="btnFinish">Finish</button>
+                    </div>
+                </div>
+
+                <!--Result page-->
+                <div id="result">
+                    <h3 class="mt-3 display-4">Marks : <span id="marks"></span> / 25</h3>
+                    <h3 class="mt-4"><span id="correct_answer"></span> Correct out of 5</h3>
+                    <h3>Result : <span id="percentage"></span>%</h3>
+
+                    <div class="d-flex justify-content-center  mt-5">
+                        <button class="btn btn-primary btn-lg mx-auto" id="start_again">Start Again</button>
                     </div>
                 </div>
             </div>
@@ -55,13 +82,14 @@
     </div>
 
 
+    <!--Jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 
     <!--Script-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
-    <!--Jquery-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Ecommerce Script-->
     <script src="assets/js/Quizapp.js"></script>
     <!--Sweet alert-->
