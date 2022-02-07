@@ -8,6 +8,7 @@ const PORT = 3000;
 app.use(bodyparser.json())
 app.use(bodyparser.urlencoded({ extended: true }))
 
+// creating routes
 app.use('/api/users', userRoutes);
 
 app.get('/', (req,res) => {

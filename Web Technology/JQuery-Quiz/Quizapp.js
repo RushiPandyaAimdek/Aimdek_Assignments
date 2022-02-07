@@ -1,6 +1,9 @@
+// variable declaration
 let i = 0;
 let correct_answer = 0;
 let mark = 0;
+
+// questions list
 let data = [
     {
         "Question": "1) Which city is called 'Rangilu' from below options ?",
@@ -44,6 +47,7 @@ let data = [
     }
 ]
 
+// document load
 $(document).ready(function () {
     $('#btnFinish').hide();
     $('#result').hide();
@@ -52,6 +56,7 @@ $(document).ready(function () {
     checkForFinish();
 });
 
+// start button click
 $(btnStart).click(function () {
     $('#btnFinish').hide();
     $('#quizContent').show();
@@ -59,15 +64,15 @@ $(btnStart).click(function () {
     adding_questions(data, i);
 });
 
-$(next).click(function () {
-
+// next question button click
+$(btnnext).click(function () {
     const checkval = $('input:radio[name=option]:checked').val();
     makeResult(checkval, i);
     i++;
     if (i == 4) {
         $('#btnFinish').attr('disabled', 'true');
         $('#btnFinish').show();
-        $('#next').hide();
+        $('#btnnext').hide();
         adding_questions(data, i);
         checkForSelect();
     }
@@ -80,6 +85,7 @@ $(next).click(function () {
     }
 });
 
+// finish button click
 $(btnFinish).click(function () {
     const checkval = $('input:radio[name=option]:checked').val();
     makeResult(checkval, i);
@@ -91,7 +97,8 @@ $(btnFinish).click(function () {
     displayResult();
 });
 
-$(start_again).click(function () {
+// start-again button click
+$(btnstart_again).click(function () {
     i = 0;
     correct_answer = 0;
     mark = 0;
@@ -101,11 +108,12 @@ $(start_again).click(function () {
     $('#quizContent').hide();
     $('#home_page').show();
     $('.start_page').show();
-    $('#next').show();
+    $('#btnnext').show();
     $('input:radio[name=option]').prop('checked', false);
-    $('#next').attr('disabled', 'true');
+    $('#btnnext').attr('disabled', 'true');
 });
 
+// for adding question to page
 function adding_questions(data, i) {
     $('#questions').text(data[i].Question);
     $('#option1').text(data[i].Option1);
@@ -115,6 +123,7 @@ function adding_questions(data, i) {
     $('#number').text(i + 1);
 }
 
+// enable finish button after last question
 function checkForFinish() {
     $('input:radio[name=option]').click(function () {
         const checkval = $('input:radio[name=option]:checked').val();
@@ -122,20 +131,23 @@ function checkForFinish() {
     });
 }
 
+// for displaying result
 function displayResult() {
     $('#marks').text(mark);
     $('#correct_answer').text(correct_answer);
     $('#percentage').text((correct_answer*100)/5);
 }
 
+// validation whether option is selected or not
 function checkForSelect() {
     $('input:radio[name=option]').prop('checked', false);
-    $('#next').attr('disabled', 'true');
+    $('#btnnext').attr('disabled', 'true');
     $('input:radio[name=option]').click(function () {
-        $('#next').removeAttr('disabled');
+        $('#btnnext').removeAttr('disabled');
     })
 }
 
+// for making marks, percentage and correct answer
 function makeResult(checkval, i) {
     if (checkval == "radio1") {
         if ($('#option1').text() == data[i].Answer) {

@@ -1,0 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.AddProduct {
+    box-shadow: 10px -10px 5px #CCC;
+    border: 1px solid black
+}
+.cart {
+    box-shadow: 10px -10px 5px #CCC;
+    border: 1px solid black
+}
+.Productlist {
+    box-shadow: 10px -10px 5px #CCC;
+    border: 1px solid black
+}

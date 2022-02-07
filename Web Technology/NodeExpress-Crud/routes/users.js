@@ -1,9 +1,10 @@
-import express, { json } from 'express';
+import express from 'express';
 import * as fs from 'fs';
 
 const router = express.Router();
 var users = [];
 
+// reading data
 fs.readFile("user.json", "utf8", (err, data) => {
     if (err) {
         res.send(err);
@@ -12,10 +13,18 @@ fs.readFile("user.json", "utf8", (err, data) => {
     else users = JSON.parse(data);
 });
 
+// get all users
 router.get('/', (req, res) => {
     res.send(users);
 })
 
+// get user by id
+router.get('/:id', (req, res) => {
+    const foundUser = users.find((user) => user.id == req.params.id);
+    res.send(foundUser);
+})
+
+// insert a new user
 router.post('/', (req, res) => {
 
     users.push(req.body);
@@ -28,11 +37,7 @@ router.post('/', (req, res) => {
     });
 })
 
-router.get('/:id', (req, res) => {
-    const foundUser = users.find((user) => user.id == req.params.id);
-    res.send(foundUser);
-})
-
+// delete a user by id
 router.delete('/:id', (req, res) => {
     users = users.filter((user) => user.id != req.params.id);
     fs.writeFile("user.json", JSON.stringify(users), function (err) {
@@ -44,6 +49,7 @@ router.delete('/:id', (req, res) => {
     res.send(`Data deleted succesfully from ID ${req.params.id}`);
 });
 
+// update a user by id
 router.put('/:id', (req, res) => {
 
     var foundUser = users.find(user => user.id === parseInt(req.params.id));

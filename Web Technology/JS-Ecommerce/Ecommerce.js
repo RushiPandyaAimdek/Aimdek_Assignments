@@ -1,11 +1,14 @@
+// variable declaration
 let imageURL;
 let products = [];
 let cart = [];
 
+// getting image path
 function loadImage(e) {
     imageURL = URL.createObjectURL(e.target.files[0]);
 }
 
+// adding product to productlist
 function addProduct() {
     let name = document.getElementById('ProductName');
     let description = document.getElementById('ProductDescription');
@@ -42,6 +45,8 @@ function addProduct() {
         });
     }
 }
+
+// creating productlist structure
 function loadProductList() {
     const product = document.getElementById('product');
     product.innerHTML = "";
@@ -56,6 +61,7 @@ function loadProductList() {
     }
 }
 
+// add product to cart items
 function btnAddToCart(productID) {
     swal("Please enter quantity", {
         content: "input",
@@ -101,6 +107,7 @@ function btnAddToCart(productID) {
         });
 }
 
+// creating cart structure
 function loadcart() {
     const carts = document.getElementById('cartItem');
     carts.innerHTML = "";
@@ -126,6 +133,7 @@ function loadcart() {
     else document.getElementById("grandTotal").style.display = "none";
 }
 
+// delete item from cart
 function btnRemoveFromCart(ID, idInPRoductlist, quantity) {
     swal({
         title: "Are you sure?",
@@ -144,6 +152,7 @@ function btnRemoveFromCart(ID, idInPRoductlist, quantity) {
         });
 }
 
+// delete item from productlist
 function btnRemoveProduct(ID) {
     swal({
         title: "Are you sure?",
