@@ -99,18 +99,7 @@ $(btnFinish).click(function () {
 
 // start-again button click
 $(btnstart_again).click(function () {
-    i = 0;
-    correct_answer = 0;
-    mark = 0;
-    $('#number').text(i);
-    $('#btnFinish').hide();
-    $('#result').hide();
-    $('#quizContent').hide();
-    $('#home_page').show();
-    $('.start_page').show();
-    $('#btnnext').show();
-    $('input:radio[name=option]').prop('checked', false);
-    $('#btnnext').attr('disabled', 'true');
+    location.reload();
 });
 
 // for adding question to page
