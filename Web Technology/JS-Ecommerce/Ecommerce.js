@@ -16,6 +16,7 @@ function addProduct() {
     let price = document.getElementById('ProductPrice');
     let image = document.getElementById('ProductImage');
 
+    //for validation
     let temp = true;
     if (name.value.trim() == "" || description.value.trim() == "" || quantity.value.trim() == "" || price.value.trim() == "" || image.value == "") {
         temp = false;
@@ -31,6 +32,8 @@ function addProduct() {
             productprice: price.value
         }
         products.push(product);
+
+        //making inputbox empty after inserting product
         name.value = "";
         description.value = "";
         quantity.value = "";
@@ -67,7 +70,7 @@ function btnAddToCart(productID) {
         content: "input",
     })
         .then((quantity) => {
-            if (quantity > products[productID].productquantity) {
+            if (quantity > parseInt(products[productID].productquantity)) {
                 swal("Enter data properly", {
                     icon: "warning",
                 });
@@ -89,11 +92,20 @@ function btnAddToCart(productID) {
                         idInPRoductlist: productID,
                         cartName: products[productID].productname,
                         cartImage: products[productID].productImage,
-                        cartQuantity: quantity,
+                        cartQuantity: parseInt(quantity),
                         cartPrice: products[productID].productprice,
-                        carttotal: quantity * products[productID].productprice
+                        carttotal: parseInt(quantity * products[productID].productprice)
                     }
-                    cart.push(cartItem);
+                    //for adding quantity in same product
+                    let flag = true;
+                    for (let i = 0; i < cart.length; i++) {
+                        if (cart[i].idInPRoductlist == productID) {
+                            flag = false;
+                            cart[i].cartQuantity = cart[i].cartQuantity + parseInt(quantity);
+                            cart[i].carttotal = cart[i].cartQuantity * products[productID].productprice;
+                        }
+                    }
+                    if (flag) cart.push(cartItem);
                     loadcart();
                     loadProductList();
                 }
@@ -113,7 +125,7 @@ function loadcart() {
     carts.innerHTML = "";
 
     if (cart.length != 0) {
-
+        //dispalying grandtotal
         let grandTotal = 0;
         for (var i = 0; i < cart.length; i++) {
             grandTotal = grandTotal + cart[i].carttotal;

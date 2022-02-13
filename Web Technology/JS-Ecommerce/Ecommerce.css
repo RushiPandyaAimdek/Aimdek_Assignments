@@ -4,14 +4,17 @@
     box-sizing: border-box;
 }
 .AddProduct {
+    background-color: gray;
     box-shadow: 10px -10px 5px #CCC;
     border: 1px solid black
 }
 .cart {
+    background-color: gray;
     box-shadow: 10px -10px 5px #CCC;
     border: 1px solid black
 }
 .Productlist {
+    background-color: gray;
     box-shadow: 10px -10px 5px #CCC;
     border: 1px solid black
 }
