@@ -7,7 +7,6 @@ import db from '../../firebase'
 import './cart.css'
 
 const Cart = () => {
-
     //variable declaration
     const dispatch = useDispatch();
     const { cartItems } = useSelector(state => state.cartReducer)
@@ -41,6 +40,7 @@ const Cart = () => {
         setCartTotal(temp)
     }, [cartItems])
 
+    //adding cartitems to order
     async function addOrder(final) {
         const docRef = await addDoc(collection(db, "orders"), final);
     }
@@ -71,7 +71,7 @@ const Cart = () => {
             }
             addOrder(final)
 
-            //reseating page
+            //resetting page
             handleClose()
             setAddress("")
             setName("")
@@ -81,9 +81,7 @@ const Cart = () => {
             localStorage.removeItem('cartItems')
             dispatch({ type: 'REMOVE_ALL_FROM_CART', payload: "" })
         }
-
     }
-
     return (
         <Layout>
             <Table responsive className='mt-3'>
@@ -154,5 +152,4 @@ const Cart = () => {
         </Layout >
     )
 }
-
 export default Cart

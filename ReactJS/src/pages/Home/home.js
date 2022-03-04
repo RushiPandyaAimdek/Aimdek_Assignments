@@ -10,15 +10,14 @@ import { Container, Form, Row, Button, Image, Col } from 'react-bootstrap'
 const Home = () => {
     //variable declaration
     const [products, setProduct] = useState([])
-    const [loader, setLoader] = useState(false)
     const [filter, setFilter] = useState("")
     const navigate = useNavigate();
     const { cartItems } = useSelector(state => state.cartReducer)
 
+    //using effect
     useEffect(() => {
         getAllData()
     }, [])
-
     useEffect(() => {
         localStorage.setItem('cartItems', JSON.stringify(cartItems))
     }, [cartItems])
@@ -26,7 +25,6 @@ const Home = () => {
     //getting data for displaying product  
     async function getAllData() {
         try {
-            setLoader(true)
             const tempArray = []
             const querySnapshot = await getDocs(collection(db, "products"));
             querySnapshot.forEach((doc) => {
@@ -35,16 +33,14 @@ const Home = () => {
                     ...doc.data()
                 }
                 tempArray.push(obj)
-                setLoader(false)
             });
             setProduct(tempArray)
         } catch (error) {
             console.log(error)
-            setLoader(false)
         }
     }
     return (
-        <Layout loader={loader}>
+        <Layout>
             <Container>
                 <Row className='mt-3'>
                     <Col md={{ span: 4}}>

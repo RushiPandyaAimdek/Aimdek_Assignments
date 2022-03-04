@@ -9,15 +9,16 @@ import './productinfo.css'
 
 const Productinfo = () => {
 
+    //variable declaration
     const [product, setProduct] = useState([])
     const params = useParams()
     const dispatch = useDispatch();
     const { cartItems } = useSelector(state => state.cartReducer)
     let flag = true
 
+    //button addtocart click
     const btnAddToCart = () => {
         const quantityx = parseInt(prompt('enter quantity'))
-
         cartItems.forEach((element, index) => {
             if (element.id == product.id) {
                 flag = false
@@ -30,14 +31,15 @@ const Productinfo = () => {
         }
     }
 
+    //using effect
     useEffect(() => {
         getData()
     }, [])
-
     useEffect(() => {
         localStorage.setItem('cartItems', JSON.stringify(cartItems))
     }, [cartItems])
 
+    //getting data of product for describing
     async function getData() {
         try {
             const fireProduct = await getDoc(doc(db, "products", params.id));
@@ -68,7 +70,6 @@ const Productinfo = () => {
                     </Row>
                 </Container>
             )}
-
         </Layout>
     )
 }

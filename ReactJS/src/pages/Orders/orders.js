@@ -5,19 +5,20 @@ import db from '../../firebase'
 import { Table } from 'react-bootstrap'
 import './orders.css'
 
-
 const Orders = () => {
-
+    //variable declaration
     const [order, setOrder] = useState([])
+
+    //using effect
     useEffect(() => {
         getData()
     }, [])
-    async function getData() {
 
+    //getting data from firebase of logged-in user
+    async function getData() {
         const tempArray = []
         const temp = JSON.parse(localStorage.getItem('currentUser'))
         const q = query(collection(db, "orders"), where("userID", "==", temp.id));
-
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc) => {
             const obj = {
@@ -25,13 +26,9 @@ const Orders = () => {
                 ...doc.data()
             }
             tempArray.push(obj)
-
         });
         setOrder(tempArray)
     }
-
-
-
     return (
         <Layout>
             <Table responsive className='mt-3'>
@@ -62,10 +59,7 @@ const Orders = () => {
                     </tbody>
                 })}
             </Table>
-
-
         </Layout>
     )
 }
-
 export default Orders

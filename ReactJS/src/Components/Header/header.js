@@ -6,20 +6,22 @@ import { Link, NavLink } from 'react-router-dom'
 import './header.css'
 
 const Header = () => {
+    //setting cart quantity in navbar
     let total = 0;
     const { cartItems } = useSelector(state => state.cartReducer)
     cartItems.map((obj) => {
         total += obj.quantity
     });
-    const x = JSON.parse(localStorage.getItem('currentUser'))
+    
+    //getting display name from localstorage
+    const temp = JSON.parse(localStorage.getItem('currentUser'))
+
+    // button logout click
     const btnLogout = () => {
         localStorage.removeItem('currentUser');
         localStorage.removeItem('cartItems');
         window.location.reload();
     }
-
-
-
     return (
         <>
             <Navbar bg="light" expand="lg">
@@ -28,7 +30,7 @@ const Header = () => {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="ms-auto">
-                            <Nav.Link>Hey {x.displayName} !!</Nav.Link>
+                            <Nav.Link>Hey {temp.displayName} !!</Nav.Link>
                             <Nav.Link as={NavLink} onClick={btnLogout} to='/Login'>Logout</Nav.Link>
                             <Nav.Link as={NavLink} to='/Orders'>Orders</Nav.Link>
                             <Nav.Link as={NavLink} to='/Cart'>

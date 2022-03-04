@@ -22,6 +22,8 @@ const Register = () => {
                     resp.user.updateProfile({
                         displayName: displayname
                     })
+
+                    //resetting page
                     setEmail("")
                     setPassword("")
                     setConfirmPassword("")
@@ -36,7 +38,6 @@ const Register = () => {
             }
         }
     }
-
     return (
         <Container>
             <Row className="justify-content-md-center">

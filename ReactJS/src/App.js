@@ -24,6 +24,7 @@ const App = () => {
 }
 export default App
 
+//using protected routes for prevent unauthorize user
 export const ProtectedRoutes = ({ children }) => {
     if (localStorage.getItem('currentUser')) {
         return children
