@@ -1,0 +1,27 @@
+<app-header></app-header>
+<div class="table-responsive">
+    <table class="table mt-3">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+            <tbody *ngFor="let i of items">
+                <tr *ngFor="let x of i.cartItems">
+                    <td class='imageDiv'><img src={{x.imageURL}} class='image' /> </td>
+                    <td>{{x.name}}</td>
+                    <td>{{x.price}}</td>
+                    <td>{{x.quantity}}</td>
+                </tr>
+                <tr class='text-end'>
+                    <td colspan='5'>
+                        <h5>Total : {{i.userDetail.grandTotal}} RS/-</h5>
+                        <h5>Purchesed on : {{i.userDetail.date | date}} </h5>
+                    </td>
+                </tr>
+            </tbody>
+    </table>
+</div>

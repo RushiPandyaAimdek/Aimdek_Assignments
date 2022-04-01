@@ -1,0 +1,25 @@
+<app-header></app-header>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-3 mt-4">
+            <select class="form-select" (change)="category($event)">
+                <option ngValue="all" selected>All</option>
+                <option ngValue="shirt">Shirt</option>
+                <option ngValue="earphone">Earphone</option>
+                <option ngValue="watch">Watch</option>
+            </select>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+
+        <div class="col-md-3 m-3 productdiv" *ngFor="let item of items | filter:filter">
+
+            <a (click)="btnViewProduct(item)">
+                <img class="img" src={{item.imageURL}} alt="Card image cap">
+
+                <h4>{{ item.name }}</h4>
+                <h6>{{ item.price }}</h6>
+            </a>
+        </div>
+    </div>
+</div>
